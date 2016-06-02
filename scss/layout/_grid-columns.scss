@@ -1,0 +1,68 @@
+// ==========================================================================
+// Grid Columns
+// ==========================================================================
+
+// Calculate grid columns
+
+.grid__col {
+  @include mq(medium) {
+    @include g-columns;
+  }
+}
+
+// Column styles
+
+[class^="grid__col--"] {
+  @include mq(small)  {
+    margin-top: em(12px);
+    margin-left: 0px;
+    margin-bottom: em(12px);
+  }
+  @include mq(medium) {
+    float: left;
+    min-height: 1px;
+    &:last-of-type {
+      float: right;
+    }
+  }
+}
+
+
+.flexed-1{
+  @extend %flexbox;
+  @include justify-content(space-around);
+  @include flex-wrap(wrap);
+}
+
+.flexed-2{
+  height: 100%;
+  @extend %flexbox;
+  @include flex-dir(column);
+  @include flex-wrap(wrap);
+  @include align-items(center);
+  @include justify-content(center);
+  justify-content: center;
+  align-items: center;
+}
+.flexed-3{
+  @extend %flexbox;
+  @include justify-content(space-between);
+  @include align-items(center);
+  justify-content: center;
+  align-items: center;
+}
+.flexed-4{
+  @extend %flexbox;
+  @include flex-dir(column);
+  @include justify-content(center);
+}
+.flexed-5{
+    height: 100%;
+    @extend %flexbox;
+    @include flex-dir(column);
+    @include flex-wrap(wrap);
+    @include align-items(center);
+    @include justify-content(center);
+    justify-content: center;
+
+}

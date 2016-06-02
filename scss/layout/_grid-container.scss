@@ -1,0 +1,35 @@
+// ==========================================================================
+// Grid Container
+// ==========================================================================
+
+.grid {
+  @extend %clearfix;
+  @extend .centered;
+  @include bg-colors($ui-colors);
+  // Make nested grid 100%
+  [class*="grid__col--"] > & {
+    width: 100%;
+  }
+  @include m(padded-bottom) {
+    padding-top: em(10px);
+    padding-bottom: em(30px);
+  }
+  @include m(padded-top) {
+    padding-top: em(30px);
+    padding-bottom: em(10px);
+  }
+  @include m(full) {
+    height: 100vh;
+    @include mq(small) {
+      height:100%;
+      & img{
+        margin-bottom: 0;
+        padding: em(20px);
+      }
+    }
+  }
+}
+
+[class^="grid--"] {
+  @extend .grid;
+}

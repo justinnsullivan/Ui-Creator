@@ -1,0 +1,163 @@
+// ==========================================================================
+// Mixins
+// ==========================================================================
+// BEM selectors
+@mixin e($element) {
+	&__#{$element} {
+		@content;
+	}
+}
+@mixin m($modifier) {
+	&--#{$modifier} {
+		@content;
+	}
+}
+// Media queries
+@mixin mq($break) {
+	@if $break == "small" {
+		@media only screen and  (min-width: $brkpoint-sm) and (max-width: $brkpoint-md),
+		only screen and (min-device-width: $brkpoint-sm) and (max-device-width: $brkpoint-md) {
+			 @content;
+		}
+	}
+	@else if $break == "medium" {
+		@media only screen and (min-width: $brkpoint-md + 1),
+		only screen and (min-device-width: $brkpoint-md + 1) {
+			 @content;
+		}
+	}
+	@else if $break == "large" {
+		@media only screen and (min-width: $brkpoint-lg),
+		only screen and (min-device-width: $brkpoint-lg){
+			 @content;
+		}
+	}
+	@else {
+		 @error"Whoops! No value could be retrieved for `#{$break}`. ";
+	}
+}
+// Generate modifier color classes
+@mixin bg-colors($map) {
+	 @each $theme, $color in $map{
+		&--#{$theme} {
+			background-color: $color;
+		}
+	}
+}
+// Generating :before or :after pseudo-element shapes
+@mixin p-el( $el, $el-w: null, $el-h: null) {
+	@if $el == "before" or $el == "after" {
+		&:#{$el} {
+			@extend %pseudos;
+			width: $el-w;
+			height: $el-h;
+			@content;
+		}
+	}
+	@else {
+		 @error"`#{$el}` is not a valid pseudo-element.";
+	}
+}
+// Image replacement
+@mixin img-replace($img, $w, $h, $disp: block) {
+	background-image: url('#{$path--rel}/#{$img}');
+	background-repeat: no-repeat;
+	width: $w;
+	height: $h;
+	display: $disp;
+}
+
+// Grid Columns
+@mixin g-columns {
+	 @for $i from 1 through $g-col-count{
+		$context: g-context($g-col-width, $g-col-count ,$g-gutter-width) !global;
+		$target: ($g-col-width * $i) + ($g-gutter-width * ($i - 1));
+		// Generate column modifier classes
+		&--#{$i} {
+			width: percentage($target / $context);
+		}
+	}
+}
+@mixin prefixed($property, $value) {
+	-webkit-#{$property}: #{$value};
+	-moz-#{$property}: #{$value};
+	-ms-#{$property}: #{$value};
+	-o-#{$property}: #{$value};
+	#{$property}: #{$value};
+}
+/* Underline From Left */
+@mixin underline-from-left {
+	$duration: .5s !default;
+	position: relative;
+	overflow: hidden;
+	&:before {
+		content: "";
+		position: absolute;
+		z-index: 1;
+		left: 0;
+		right: 100%;
+		bottom: 0;
+		background: $color-primary;
+		height: 4px;
+		@include prefixed(transition-property, "right");
+		@include prefixed(transition-duration, $duration);
+		@include prefixed(transition-ßtiming-function, ease-out);
+	}
+	&:active,
+	&:focus,
+	&:hover {
+		&:before {
+			right: 0;
+		}
+	}
+}
+/* Fade */
+@mixin fade {
+	$duration: .3s !default;
+	overflow: hidden;
+	@include prefixed(transition-duration, $duration);
+	@include prefixed(transition-property, "color, background-color");
+
+	&:hover,
+	&:focus,
+	&:active {
+		background-color: palette(gray,dark);
+		color: white;
+	}
+}
+
+@mixin box-shadow-inset {
+	@include prefixed(transition-duration, .2s);
+	@include prefixed(transition-property, box-shadow);
+
+	box-shadow: inset 0 0 0 $panel-dark,
+		0 0 1px rgba(0, 0, 0, 0); /* Hack to improve aliasing on mobile/tablet devices */
+
+	&:hover,
+	&:focus,
+	&:active {
+		box-shadow: inset 4px 4px 4px $panel-dark,
+		0 0 1px rgba(0, 0, 0, 0); /* Hack to improve aliasing on mobile/tablet devices */
+	}
+}
+
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white, 50%)) {
+  ::-webkit-scrollbar {
+      width:  $size;
+      height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+      background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+      background: $background-color;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}

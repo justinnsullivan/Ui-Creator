@@ -1,0 +1,60 @@
+// ==========================================================================
+// Placeholders
+// ==========================================================================
+
+
+// Headlines
+
+%hdln-prim {
+  color: palette(grey, x-dark);
+  font-weight: $font-weight--light;
+  font-size: em(42px);
+  line-height: (46px/42px);
+  margin-top: 0;
+}
+%hdln-sec {
+  color: palette(grey, light);
+  letter-spacing: $letter-space;
+  font-weight: $font-weight--light;
+  font-size: em(24px);
+  font-family: $font-family--primary;
+}
+
+// Paragraphs
+
+%para-prim {
+  @extend %center-align;
+  margin:0;
+  padding-bottom: em(40px);
+  font-family: $font-family--primary;
+  font-weight: $font-weight--light;
+  font-size: em(24px);
+}
+
+// Buttons
+
+%btn {
+  padding: 15px 30px;
+  cursor: pointer;
+  border: 0;
+  border-radius : $br--default;
+  color: $white;
+  text-transform: uppercase;
+  font-size : em(14px);
+  font-weight: $font-weight--bold;
+  transition: opacity $trns-duration;
+  display: block;
+  &:hover {
+    opacity: .75;
+  }
+  &:active {
+    opacity: initial;
+  }
+}
+
+// Icons
+
+%icn--ui {
+	line-height: 0;
+	cursor: pointer;
+}

@@ -1,0 +1,11 @@
+.paragraph {
+
+	&-primary {
+		@extend %para-prim;
+		@include mq(small) {
+			padding-left: em(14px);
+			padding-right: em(14px);
+			font-size: 20px;
+		}
+  }
+}

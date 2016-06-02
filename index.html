@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Ui Creator</title>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.2.min.js"></script>
+    <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.5.10/dist/clipboard.min.js"></script>
+    <script src='js/main.js'></script>
+    <script src='js/color-steal.js'></script>
+    <link rel='stylesheet' href='css/application.css' />
+</head>
+
+<body>
+    <div class="side-bar">
+    </div>
+    <div class="bod">
+        <input id="primary" class="hidden"></input>
+        <div class="centered flexed-1 colors" id="result-container">
+            <div class="colors__panel" style="background-color:white;width:100%"></div>
+        </div>
+        <div class="grid">
+            <div class="grid__col--6">
+                <button class="form__btn" id="analogous">Analogous</button>
+                <button class="form__btn" id="monochromatic">Monochromatic</button>
+                <button class="form__btn" id="shades">Shades</button>
+                <button class="form__btn" id="complementary">Complementary</button>
+                <button class="form__btn" id="split">Split complement</button>
+                <button class="form__btn" id="triad">Triad</button>
+            </div>
+            <div class="grid__col--6 flexed-5">
+                <input class="cenetered form__input" id="hex-input" placeholder="#FFF"></input>
+                <div class="flexed-3 form__tri">
+                    <h2 class="form__label">RGB</h2>
+                    <div class="flexed-3" id="rgb_inputs">
+
+                        <input class="form__input num-only rgb" id="rgb-red" placeholder="###"></input>
+                        <input class="form__input num-only rgb" id="rgb-green" placeholder="###"></input>
+                        <input class="form__input num-only rgb" id="rgb-blue" placeholder="###"></input>
+                    </div>
+                </div>
+                <div class="flexed-3 form__tri">
+                    <h2 class="form__label">HSL</h2>
+                    <div class="flexed-3" id="hsl_inputs">
+                        <input class="form__input num-only hsl hue" id="hsl-h" placeholder="###"></input>
+                        <input class="form__input num-only hsl hs" id="hsl-s" placeholder="###"></input>
+                        <input class="form__input num-only hsl hs" id="hsl-l" placeholder="###"></input>
+                    </div>
+                </div>
+                <div class="flexed-3 form__tri">
+                    <h2 class="form__label">HSV</h2>
+                    <div class="flexed-3" id="hsl_inputs">
+
+                        <input class="form__input num-only hsv hue" id="hsv-h" placeholder="###"></input>
+                        <input class="form__input num-only hsv hs" id="hsv-s" placeholder="###"></input>
+                        <input class="form__input num-only hsv hs" id="hsv-v" placeholder="###"></input>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id='circle'>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

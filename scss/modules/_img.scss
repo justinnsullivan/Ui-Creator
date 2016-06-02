@@ -1,0 +1,35 @@
+// ==========================================================================
+// Images
+// ==========================================================================
+.img {
+    @include m(wrap) {
+        border: 1px solid palette(grey, x-light);
+        padding: em(12px);
+    }
+    @include m(avatar) {
+        display: block;
+        border-radius: $br--round;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: em(24px);
+    }
+    @include m(hero) {
+         @include mq(large) {
+            padding-top: em(60px);
+            padding-bottom: em(60px);
+            margin: 0;
+        }
+        @include mq(small) {
+            padding-top: em(20px);
+            padding-bottom: em(20px);
+            margin: 0;
+            padding-left: em(10px);
+            padding-right: em(10px);
+        }
+        @include mq(medium) {
+            padding-top: em(40px);
+            padding-bottom: em(40px);
+            margin: 0;
+        }
+    }
+}

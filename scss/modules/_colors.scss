@@ -1,0 +1,20 @@
+// ==========================================================================
+// Colors
+// ==========================================================================
+
+.colors {
+    height: 50vh;
+    @include e(panel) {
+        height: 100%;
+        @include box-shadow-inset();
+        @include e(label) {
+            font-size: em(20px);
+            color: $white;
+            margin-top:em(4px);
+            margin-bottom:em(4px);
+            text-align: center;
+            padding: em(8px);
+            margin: 0;
+        }
+    }
+}
