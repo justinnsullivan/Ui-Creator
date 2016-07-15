@@ -140,7 +140,7 @@ function setColors(colors) {
             html += '<div class="colors__panel flexed-5" ' + colors[i].rgb.string() +
                 ' style="background-color:' + colors[i].rgb.string() +
                 ';width:' + width + '%"><p class="colors__panel__label">' +
-                colors[i].hex.substring(1) + '</p><p class="colors__panel__label">' +
+                colors[i].hex + '</p><p class="colors__panel__label">' +
                 colors[i].rgb.string()+'</p><p class="colors__panel__label">' +
                 colors[i].hsl.string()+'</p></div>';
         }
