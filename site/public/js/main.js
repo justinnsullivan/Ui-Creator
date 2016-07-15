@@ -16,7 +16,7 @@ var error = false;
 $(document).ready(function() {
     setSideBar();
     $('.side-bar__color').click(function() {
-        setFromBar($(this))
+        setFromBar($(this));
     });
     $('.form__btn').click(function() {
         var meathod = $(this).attr('id');
@@ -26,7 +26,7 @@ $(document).ready(function() {
         var value = $(this).val();
         var id = $(this).attr('id');
         checkInputError($(this), value, id);
-        if(error==false) {
+        if(error == false) {
 
           if(id == 'hex-input'){
             var color = new smartcolor(value);
@@ -129,7 +129,7 @@ function setColors(colors) {
     if (colors.hex != null) {
         var html = '<div class="colors__panel flexed-5" style="background-color:' +
           colors.rgb.string() + ';width:100%"><p class="colors__panel__label">' +
-          colors.hex.substring(1) + '</p><p class="colors__panel__label">' +
+          colors.hex.replace("#", ""); + '</p><p class="colors__panel__label">' +
           colors.rgb.string()+'</p><p class="colors__panel__label">' +
           colors.hsl.string()+'</p></div>';
         $('#result-container').html(html);
